@@ -1,0 +1,74 @@
+/* public/css/styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 50px;
+}
+
+header {
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-links {
+    display: flex;
+}
+
+.top-link {
+    margin-right: 10px;
+}
+
+.top-link:first-child {
+    margin-right: auto;
+}
+
+.user-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #444;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.gray-button {
+    background-color: #666;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.user-info {
+    color: #333; /* ユーザー名のテキスト色 */
+    font-weight: bold;
+}

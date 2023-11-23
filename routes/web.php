@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PostController;
+
+// 新規会員登録フォーム表示
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// 新規会員登録処理
+Route::post('/register', [RegisterController::class, 'register']);
+
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+
+Route::get('/', function () {
+    return view('top');
+});
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
+
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
+
+//
+Route::middleware(['auth'])->group(function () {
+    Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.index');
+});
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');//login
+Route::post('/login', [LoginController::class, 'login']);//login
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');//ログアウト
+
+// 新しい投稿作成ページ
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+// 新しい投稿を保存
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
