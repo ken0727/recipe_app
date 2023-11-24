@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_path',
     ];
 
     /**
@@ -47,5 +48,10 @@ class User extends Authenticatable
         public function dashboardPath()
     {
         return '/index/' . $this->id;
+    }
+
+        public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

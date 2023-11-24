@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // bigint型のID
             $table->string('name'); // varchar型のname
-            $table->string('mail'); // varchar型のmail
+            $table->string('email'); // varchar型のmail
             $table->string('password', 15); // varchar型のpassword（最大15文字）
             $table->binary('image')->nullable(); // blob型のimage（nullableでNULLを許可）
             $table->timestamps(); // created_atとupdated_atのtimestamp

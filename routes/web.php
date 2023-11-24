@@ -12,10 +12,8 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 // 新規会員登録処理
 Route::post('/register', [RegisterController::class, 'register']);
 
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
 
 Route::get('/', function () {
     return view('top');
@@ -29,13 +27,12 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
+
 
 //
 Route::middleware(['auth'])->group(function () {
-    Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.index');
+    // ユーザーごとの投稿一覧を表示するルート
+    Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.posts.index');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');//login
@@ -46,4 +43,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');//ロ�
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 // 新しい投稿を保存
+Route::get('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.index');

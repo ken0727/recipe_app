@@ -29,4 +29,22 @@ class RegisterController extends Controller
 
         return redirect('/login')->with('success', '新規会員登録が完了しました。ログインしてください。');
     }
+
+    public function uploadImage(Request $request)
+{
+    // ファイルのバリデーションなどを追加
+
+    $uploadedImage = $request->file('image');
+    $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
+    $uploadedImage->storeAs('public/images', $imageName);
+
+    // ファイルパスをデータベースに保存する処理
+    // 例えば、Userモデルのimage_pathカラムに保存するなど
+    $user = Auth::user();
+    $user->image_path = 'images/' . $imageName;
+    $user->save();
+
+    return redirect()->back()->with('success', '画像がアップロードされました。');
+}
+
 }

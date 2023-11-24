@@ -4,19 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameMailColumnInUsersTable extends Migration
-{
+return new class extends Migration {
+    /**
+     * Run the migrations.
+     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('mail', 'email');
+            $table->string('image_path')->nullable()->after('image');
+            // 他にも必要ならばカラムの変更を追加する
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('email', 'mail');
+            $table->dropColumn('image_path');
         });
     }
-}
+};

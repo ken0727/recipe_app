@@ -23,10 +23,10 @@
             <textarea name="procedure" id="procedure" rows="4" required></textarea>
         </div>
 
-        <div>
-            <label for="image">画像:</label>
-            <input type="file" name="image" id="image">
-        </div>
+<div>
+        <label for="file_path">ファイルアップロード:</label>
+        <input type="file" name="image_path" id="image_path" enctype="multipart/form-data">
+    </div>
 
         <div>
             <button type="submit">投稿する</button>
