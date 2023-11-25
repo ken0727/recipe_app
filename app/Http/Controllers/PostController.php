@@ -16,9 +16,10 @@ class PostController extends Controller
     public function index()
 {
     // 全ユーザーの投稿を取得
-    $allPosts = Post::with('user')->get();
+    $allPosts = Post::with('user')->get(); 
 
-    return view('posts.index', ['allPosts' => $allPosts]);
+    
+    return view('posts.show', ['allPosts' => $allPosts]);
     
 }
 
