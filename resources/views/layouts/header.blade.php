@@ -10,7 +10,7 @@
         </div>
 
         <div class="top-link">
-            <a href="{{ route('posts.create') }}">投稿</a>
+            <a href="{{ route('posts.create') }}">投稿する</a>
         </div>
 
         <div class="top-link">

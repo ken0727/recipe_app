@@ -19,8 +19,12 @@ class PostController extends Controller
     $allPosts = Post::with('user')->get(); 
 
     
-    return view('posts.show', ['allPosts' => $allPosts]);
-    
+    return view('index.show', ['allPosts' => $allPosts]);
+}
+
+    public function show(Post $post)
+{
+    return view('posts.show', ['post' => $post]);
 }
 
     public function store(Request $request)

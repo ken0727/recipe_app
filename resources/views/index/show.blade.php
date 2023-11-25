@@ -12,10 +12,12 @@
             <div class="row">
                 @foreach ($chunk as $post)
                     <div class="col-md-4">
-                        <h3>{{ $post->name }}</h3>
+                        <a href="{{ route('posts.show', $post) }}">
                         @if ($post->image_path)
                             <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
-                        @else
+                        <h3>{{ $post->name }}</h3>
+                        </a>
+                            @else
                             <p>画像はありません。</p>
                         @endif
                     </div>

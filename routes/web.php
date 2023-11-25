@@ -46,4 +46,7 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::get('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.index');
+Route::get('/index/{user_id}', [PostController::class, 'index'])->name('user.index');
+
+//投稿の詳細
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
