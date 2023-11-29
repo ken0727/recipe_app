@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BookmarkRecipeController;
 
 // 新規会員登録フォーム表示
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -50,3 +51,6 @@ Route::get('/index/{user_id}', [PostController::class, 'index'])->name('user.ind
 
 //投稿の詳細
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::post('/bookmark-recipe/{postId}', [BookmarkRecipeController::class, 'bookmarkRecipe'])->name('bookmark-recipe');
+Route::delete('/unbookmark-recipe/{postId}', [BookmarkRecipeController::class, 'unbookmarkRecipe'])->name('unbookmark-recipe');
