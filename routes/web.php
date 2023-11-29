@@ -54,3 +54,5 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 
 Route::post('/bookmark-recipe/{postId}', [BookmarkRecipeController::class, 'bookmarkRecipe'])->name('bookmark-recipe');
 Route::delete('/unbookmark-recipe/{postId}', [BookmarkRecipeController::class, 'unbookmarkRecipe'])->name('unbookmark-recipe');
+
+Route::get('/bookmark_recipe', [BookmarkRecipeController::class, 'index'])->name('bookmark-recipe');

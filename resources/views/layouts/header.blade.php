@@ -14,7 +14,8 @@
         </div>
 
         <div class="top-link">
-            <a href="/">お気に入り</a>
+            <a href="{{ route('bookmark-recipe') }}">お気に入り</a>
+            
         </div>
     </div>
 

@@ -5,8 +5,6 @@
 
     <h1>Recipe App</h1>
 
-    <!-- ボタン -->
-
         <div class="button-container">
         <a href="{{ route('signup') }}" class="gray-button">新規会員登録</a>
     </div>

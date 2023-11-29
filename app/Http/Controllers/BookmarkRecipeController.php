@@ -43,4 +43,13 @@ class BookmarkRecipeController extends Controller
 
         return redirect()->back()->with('error', 'エラーが発生しました。');
     }
+
+    public function index()
+    {
+        // ログインユーザーがブックマークしたレシピを取得
+        $bookmarkedRecipes = Auth::user()->bookmarkRecipes;
+
+        // ブックマークされたレシピ一覧のビューを表示
+        return view('bookmark_recipe.index', compact('bookmarkedRecipes'));
+    }
 }
