@@ -15,11 +15,11 @@
                         <a href="{{ route('posts.show', $post) }}">
                         @if ($post->image_path)
                             <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
+                            @else
+                            <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
+                        @endif
                         <h3>{{ $post->name }}</h3>
                         </a>
-                            @else
-                            <p>画像はありません。</p>
-                        @endif
                     </div>
                 @endforeach
             </div>

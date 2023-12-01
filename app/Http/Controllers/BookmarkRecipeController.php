@@ -50,6 +50,6 @@ class BookmarkRecipeController extends Controller
         $bookmarkedRecipes = Auth::user()->bookmarkRecipes;
 
         // ブックマークされたレシピ一覧のビューを表示
-        return view('bookmark_recipe.index');
+        return view('bookmark_recipe.index', compact('bookmarkedRecipes'));
     }
 }
