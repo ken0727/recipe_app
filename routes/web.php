@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BookmarkRecipeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MyPageController;
 
 // 新規会員登録フォーム表示
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -56,3 +58,9 @@ Route::post('/bookmark-recipe/{postId}', [BookmarkRecipeController::class, 'book
 Route::delete('/unbookmark-recipe/{postId}', [BookmarkRecipeController::class, 'unbookmarkRecipe'])->name('unbookmark-recipe');
 
 Route::get('/bookmarks', [BookmarkRecipeController::class, 'index'])->name('bookmarks');
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/my-page', [MyPageController::class, 'show'])->name('my-page.show');
+
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
