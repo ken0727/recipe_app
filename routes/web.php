@@ -64,3 +64,4 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')
 Route::get('/my-page', [MyPageController::class, 'show'])->name('my-page.show');
 
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
