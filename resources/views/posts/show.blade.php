@@ -3,6 +3,7 @@
 @section('title', $post->name)
 
 @section('content')
+
 <h1>{{ $post->name }}</h1>
 @if ($post->image_path)
     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">

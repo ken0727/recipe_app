@@ -57,7 +57,12 @@ class PostController extends Controller
             // 画像のファイル名をimage_pathに保存
             $post->image_path = 'images/' . $filename;
             $post->save();
+        } else {
+            // 画像が添付されていない場合、Noimage.jpegを設定
+            $post->image_path = 'Noimage.jpeg';
+            $post->save();
         }
+
 
         return redirect()->route('user.index', ['user_id' => $userId])->with('success', '投稿が作成されました。');
     }
