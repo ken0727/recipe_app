@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <form action="{{ route('profile.update') }}" method="POST">
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -43,5 +43,8 @@
         </div>
 
     </form>
+
+    <img src="{{ asset('storage/' .$user->image_path) }}" alt="{{ $user->name }}" width="200" height="200">
+
 
 @endsection
