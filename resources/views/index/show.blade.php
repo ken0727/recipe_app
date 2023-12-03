@@ -4,10 +4,12 @@
 
 @section('content')
     <h1>投稿一覧</h1>
-    
+    <?php
+    Log::info(__METHOD__); // ログにメソッド名を出力
+    ?>
 
     @if ($allPosts->isNotEmpty())
-    
+
         @foreach ($allPosts->chunk(3) as $chunk)
             <div class="row">
                 @foreach ($chunk as $post)

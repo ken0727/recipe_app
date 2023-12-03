@@ -13,11 +13,11 @@ public function show($user_id)
 {
     // 特定のユーザーの投稿一覧を取得
     $user = User::find($user_id);
-
+    
     // ユーザーが存在するか確認
     if ($user) {
         $allPosts = $user->posts; // リレーションを通じてユーザーの投稿を取得
-        return view('index.show', compact('allPosts'));
+        return view('index.show', compact('allPosts', 'user'));
     } else {
         // ユーザーが存在しない場合の処理
         echo "投稿がありません";

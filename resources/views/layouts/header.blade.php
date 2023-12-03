@@ -19,17 +19,20 @@
         </div>
     </div>
 
-        @auth
-        <div class="user-info">
-            <a href="{{ route('my-page.show') }}">{{ auth()->user()->name }}</a>
-        </div>
-
-        <div class="user-info">
-            <a href="{{ route('logout') }}">ログアウト</a>
-        </div>
-        
-    <div class="user-icon">
-        <img src="{{ asset('storage/' .$user->image_path) }}" alt="User Icon">
+@auth
+    <div class="user-info">
+        <a href="{{ route('my-page.show') }}">{{ auth()->user()->name }}</a>
     </div>
-        @endauth
+
+    <div class="user-info">
+        <a href="{{ route('logout') }}">ログアウト</a>
+    </div>
+    
+    <div class="user-icon">
+        @if(auth()->user()->image_path)
+            <img src="{{ asset('storage/' . auth()->user()->image_path) }}" alt="User Icon">
+        @endif
+    </div>
+@endauth
+
 </header>
