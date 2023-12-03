@@ -38,6 +38,9 @@
             <input type="password" id="password_confirmation" name="password_confirmation">
         </div>
 
+        <label for="profile_image">プロフィール画像:</label>
+        <input type="file" name="profile_image" accept="image/*">
+
         <div>
             <button type="submit">更新する</button>
         </div>

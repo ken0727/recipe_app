@@ -16,9 +16,19 @@ class ProfileController extends Controller
         return view('profile',compact('user'));
     }
 
+    private function uploadImage(Request $request)
+    {
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/profile_images', $filename);
+            Auth::user()->update(['image_path' => 'profile_images/' . $filename]);
+        }
+    }
+
+
 public function update(Request $request)
     {
-        
         // バリデーション
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -44,6 +54,7 @@ public function update(Request $request)
             // 他のプロフィール情報に対する更新も必要に応じて追加
         ]);
 
+        $this->uploadImage($request);
 
     
         // パスワードの更新
@@ -58,13 +69,8 @@ public function update(Request $request)
             } else {
                 // エラー処理（現在のパスワードが一致しない場合）
                 return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.'])->withInput();
-
             }
         }
-
         return redirect()->route('profile.show')->with('success', 'プロフィールが更新されました。');
     }
 }
-
-
-
