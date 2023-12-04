@@ -1,35 +1,39 @@
-@extends('layouts.app') <!-- layout.appを継承 -->
-@section('title', '新規会員登録')<!-- タブに表示される -->
+<!-- resources/views/auth/register.blade.php -->
+
+@extends('layouts.app')
+@section('title', '新規会員登録')
 @section('content')
 
-
-<h1>新規会員登録</h1>
+<div class="container">
+                    <div class="row justify-content-center">
+            <div class="col-md-6">
+    <h1 class="mb-4">新規会員登録</h1>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <div>
-            <label for="name">名前:</label>
-            <input type="text" name="name" id="name" required>
+        <div class="mb-3">
+            <label for="name" class="form-label">名前:</label>
+            <input type="text" name="name" id="name" class="form-control" required>
         </div>
 
-        <div>
-            <label for="email">メールアドレス:</label>
-            <input type="email" name="email" id="email" required>
+        <div class="mb-3">
+            <label for="email" class="form-label">メールアドレス:</label>
+            <input type="email" name="email" id="email" class="form-control" required>
         </div>
 
-        <div>
-            <label for="password">パスワード:</label>
-            <input type="password" name="password" id="password" required>
+        <div class="mb-3">
+            <label for="password" class="form-label">パスワード:</label>
+            <input type="password" name="password" id="password" class="form-control" required>
         </div>
 
-        <div>
-            <button type="submit">新規登録</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">新規登録</button>
         </div>
     </form>
+</div>
 
 @endsection
-
 
 <?php
     $hideHeader = true; // ヘッダーを非表示にするための変数セット

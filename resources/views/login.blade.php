@@ -1,8 +1,13 @@
-@extends('layouts.app') <!-- layout.appを継承 -->
-@section('title', 'ログイン')<!-- タブに表示される -->
+<!--
+@extends('layouts.app') 
+@section('title', 'ログイン')
 
 
 @section('content')
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
 <h1>ログイン</h1>
 
     <form method="POST" action="{{ route('login') }}">
@@ -22,8 +27,11 @@
             <button type="submit">ログイン</button>
         </div>
     </form>
-
+</div>
+</div>
+</div>
 @endsection
+
 
 
 <?php

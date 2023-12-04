@@ -9,11 +9,15 @@ body {
     padding: 50px;
 }
 
+form {
+    text-align: left;
+}
+
 header {
     background-color: #fff;
     color: #333;
     text-align: center;
-    padding: 10px;
+    padding: 0px 10px;
     border-bottom: 2px solid #ddd;
     display: flex;
     justify-content: space-between;

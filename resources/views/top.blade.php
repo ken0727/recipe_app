@@ -3,14 +3,19 @@
 
 @section('content')
 
-    <h1>Recipe App</h1>
 
-        <div class="button-container">
-        <a href="{{ route('signup') }}" class="gray-button">新規会員登録</a>
-    </div>
-
-        <div class="button-container">
-        <a href="{{ route('login') }}" class="gray-button">ログイン</a>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Recipe App</h1>
+                <div class="button-container">
+                <a href="{{ route('signup') }}" class="gray-button">新規会員登録</a>
+                </div>
+                <div class="button-container">
+                <a href="{{ route('login') }}" class="gray-button">ログイン</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
