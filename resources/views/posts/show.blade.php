@@ -27,5 +27,5 @@
                 <button type="submit">ブックマーク</button>
             </form>
         @endif
-    @endif
+@endif
 @endsection

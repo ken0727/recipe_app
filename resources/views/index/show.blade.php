@@ -11,6 +11,7 @@
             <div class="row">
                 @foreach ($chunk as $post)
                     <div class="col-md-4">
+                        <div class="post-image-wrapper">
                         <a href="{{ route('posts.show', $post) }}">
                         @if ($post->image_path)
                             <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
@@ -19,6 +20,7 @@
                         @endif
                         <h3>{{ $post->name }}</h3>
                         </a>
+                    </div>
                     </div>
                 @endforeach
             </div>

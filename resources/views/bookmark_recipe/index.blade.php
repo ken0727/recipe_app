@@ -11,13 +11,14 @@
         <div class="row">
             @foreach ($bookmarkedRecipes as $recipe)
                 <div class="col-md-4">
-                    
+                    <div class="post-image-wrapper">
                     @if ($recipe->post->image_path)
                         <img src="{{ asset('storage/' . $recipe->post->image_path) }}" alt="{{ $recipe->post->name }}" width="300" height="200">
                     @else
                         <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
                     @endif
                     <h3>{{ $recipe->post->name }}</h3>
+                    </div>
                 </div>
             @endforeach
         </div>

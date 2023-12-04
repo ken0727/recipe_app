@@ -20,7 +20,7 @@
 
             <div class="mb-3">
                 <label for="material" class="form-label">材料:</label>
-                <input type="text" name="material" id="material" class="form-control" required>
+                <textarea name="material" id="material" class="form-control" rows="4" required></textarea>
             </div>
 
             <div class="mb-3">

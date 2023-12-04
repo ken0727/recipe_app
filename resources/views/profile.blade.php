@@ -29,7 +29,15 @@
                         <input type="password" class="form-control" id="current_password" name="current_password">
                     </div>
 
-                    <!-- ...（他の入力フォームも同様に追加）... -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">新しいパスワード:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">新しいパスワード（確認用）:</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                    </div>
 
                     <label for="profile_image" class="form-label">プロフィール画像:</label>
                     <input type="file" class="form-control" name="profile_image" accept="image/*" id="profile_image">

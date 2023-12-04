@@ -20,12 +20,14 @@
     @foreach ($posts as $recipe)
 
         <div class="col-md-4">
+            <div class="post-image-wrapper">
             @if ($recipe->user_id == auth()->id())
                 <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->name }}" width="300" height="200">
             @else
                 <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
             @endif
                 <h3>{{ $recipe->name }}</h3>
+            </div>
         </div>
     @endforeach
 </div>
