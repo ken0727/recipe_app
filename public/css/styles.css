@@ -13,6 +13,12 @@ label{
     float: left;
 }
 
+.text-left{
+    text-align: left;
+}
+
+
+
 header {
     background-color: #fff;
     color: #333;
