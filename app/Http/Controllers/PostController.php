@@ -100,5 +100,26 @@ public function update(Request $request, Post $post)
     return view('posts.edit', compact('post'));
 }
 
+public function destroy(Post $post)
+{
+    // ログインしているかどうかを確認
+    if (!auth()->check()) {
+        // ログインしていない場合の処理（例えばログインページにリダイレクトなど）
+        return redirect()->route('login');
+    }
+
+    // ログインユーザーが投稿者であるか、または管理者であるかを確認
+    if (auth()->id() === $post->user_id || auth()->user()->isAdmin()) {
+        // ここで投稿を削除する
+        $post->delete();
+
+        return redirect()->route('my-page.show')->with('success', '投稿が削除されました。');
+    }
+
+    return redirect()->back()->with('error', '権限がありません。');
+}
+
+
+
 
 }

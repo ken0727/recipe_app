@@ -36,6 +36,15 @@
                 @if (Auth::id() === $post->user_id)
                     <!-- 編集ボタン -->
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">編集</a>
+                    
+                        <!-- 削除ボタン -->
+                    <!-- destroy メソッドへの削除フォーム -->
+                <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline" onsubmit="return confirm('本当に削除しますか？');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">削除</button>
+                </form>
+                    
                 @else
                     <!-- ブックマークボタン -->
                     @if (Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
