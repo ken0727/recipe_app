@@ -27,51 +27,50 @@ class PostController extends Controller
     $user = Auth::user(); 
     return view('posts.show', ['post' => $post,'user']);
 }
-
-    public function store(Request $request)
-    {
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'material' => 'required|string',
-            'procedure' => 'required|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $userId = Auth::id(); // ログインしているユーザーのIDを取得
-
-        $post = new Post([
-            'user_id' => $userId,
-            'name' => $request->input('name'),
-            'material' => $request->input('material'),
-            'procedure' => $request->input('procedure'),
-        ]);
-
-        $post->save();
-
-        // 画像がアップロードされていれば保存
-        if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/images', $filename);
-            // 画像のファイル名をimage_pathに保存
-            $post->image_path = 'images/' . $filename;
-            $post->save();
-        } else {
-            // 画像が添付されていない場合、Noimage.jpegを設定
-            $post->image_path = 'Noimage.jpeg';
-            $post->save();
-        }
-
-
-        return redirect()->route('user.index', ['user_id' => $userId])->with('success', '投稿が作成されました。');
-    }
-
-    public function edit(Post $post)
+// 画像保存処理を行うメソッド
+private function saveImage($post, $image)
 {
-    return view('posts.edit', compact('post'));
+    $filename = time() . '.' . $image->getClientOriginalExtension();
+    $image->storeAs('public/images', $filename);
+    // 画像のファイル名をimage_pathに保存
+    $post->image_path = 'images/' . $filename;
+    $post->save();
 }
 
+// storeメソッド
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'material' => 'required|string',
+        'procedure' => 'required|string',
+        'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $userId = Auth::id(); // ログインしているユーザーのIDを取得
+
+    $post = new Post([
+        'user_id' => $userId,
+        'name' => $request->input('name'),
+        'material' => $request->input('material'),
+        'procedure' => $request->input('procedure'),
+    ]);
+
+    $post->save();
+
+    // 画像がアップロードされていれば保存
+    if ($request->hasFile('image_path')) {
+        $this->saveImage($post, $request->file('image_path'));
+    } else {
+        // 画像が添付されていない場合、Noimage.jpegを設定
+        $post->image_path = 'Noimage.jpeg';
+        $post->save();
+    }
+
+    return redirect()->route('user.index', ['user_id' => $userId])->with('success', '投稿が作成されました。');
+}
+
+// updateメソッド
 public function update(Request $request, Post $post)
 {
     $request->validate([
@@ -88,7 +87,17 @@ public function update(Request $request, Post $post)
         // 他にもアップデートするフィールドがあればここに追加
     ]);
 
+    // 画像がアップロードされていれば保存
+    if ($request->hasFile('image_path')) {
+        $this->saveImage($post, $request->file('image_path'));
+    }
+
     return redirect()->route('my-page.show', $post);
+}
+
+    public function edit(Post $post)
+{
+    return view('posts.edit', compact('post'));
 }
 
 
