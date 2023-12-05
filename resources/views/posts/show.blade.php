@@ -28,27 +28,39 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                @if (Auth::check())
-                    <div class="mb-3">
-                        @if (Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
-                            <!-- ブックマーク解除ボタン -->
-                            <form action="{{ route('unbookmark-recipe', $post->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">ブックマーク解除</button>
-                            </form>
-                        @else
-                            <!-- ブックマークボタン -->
-                            <form action="{{ route('bookmark-recipe', $post->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">ブックマーク</button>
-                            </form>
-                        @endif
-                    </div>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Auth::check())
+            <div class="mb-3">
+                @if (Auth::id() === $post->user_id)
+                    <!-- 編集ボタン -->
+                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">編集</a>
+                @else
+                    <!-- ブックマークボタン -->
+                    @if (Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
+                        <form action="{{ route('unbookmark-recipe', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">ブックマーク解除</button>
+                        </form>
+                    @else
+                        <form action="{{ route('bookmark-recipe', $post->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">ブックマーク</button>
+                        </form>
+                    @endif
                 @endif
+            </div>
+        @endif
+    </div>
+</div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>投稿者: {{ $post->user->name }}</p>
             </div>
         </div>
     </div>
+
 @endsection
