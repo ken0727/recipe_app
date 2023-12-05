@@ -5,9 +5,10 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-4 mb-3 text-left">
+            <div class="col-md-4 mb-3 text-left image-container">
                 @if ($post->image_path)
-                    <div class="mb-3 mt-4"> <!-- mt-4を追加 -->
+                    <div class="mb-3 mt-4">
+                            <h3>{{ $post->name }}</h3>
                         <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 300px; height: 200px;">
                     </div>
                 @else

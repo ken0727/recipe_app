@@ -67,4 +67,29 @@ class PostController extends Controller
         return redirect()->route('user.index', ['user_id' => $userId])->with('success', '投稿が作成されました。');
     }
 
+    public function edit(Post $post)
+{
+    return view('posts.edit', compact('post'));
+}
+
+public function update(Request $request, Post $post)
+{
+    $request->validate([
+        'name' => 'required|max:255',
+        'material' => 'required',
+        'procedure' => 'required',
+        // 他にも必要なバリデーションルールを追加
+    ]);
+
+    $post->update([
+        'name' => $request->name,
+        'material' => $request->material,
+        'procedure' => $request->procedure,
+        // 他にもアップデートするフィールドがあればここに追加
+    ]);
+
+    return redirect()->route('my-page.show', $post);
+}
+
+
 }
