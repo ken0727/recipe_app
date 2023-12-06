@@ -12,15 +12,19 @@
                 @foreach ($chunk as $post)
                     <div class="col-md-4">
                         <div class="post-image-wrapper">
-                        <a href="{{ route('posts.show', $post) }}">
-                        @if ($post->image_path)
-                            <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
-                            @else
-                            <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
-                        @endif
-                        <h3>{{ $post->name }}</h3>
-                        </a>
-                    </div>
+                            <a href="{{ route('posts.show', $post) }}">
+                                @if ($post->image_path)
+                                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
+                                @else
+                                    <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
+                                @endif
+                                <h3>{{ $post->name }}</h3>
+                            </a>
+                            @if (Auth::check() && Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
+                                <!-- ★マークを表示 -->
+                                <span style="color: gold;">★</span>
+                            @endif
+                        </div>
                     </div>
                 @endforeach
             </div>
