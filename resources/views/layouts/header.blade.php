@@ -33,7 +33,7 @@
                 <a href="{{ route('my-page.show') }}">マイページ</a>
                 <!-- 他のユーザー情報に関連するリンクなどもここに追加できます -->
                 <a href="{{ route('bookmarks') }}">お気に入り投稿</a>
-                <a href="{{ route('bookmarks') }}">お気に入りユーザー</a>
+                <a href="{{ route('favorite.user') }}">お気に入りユーザー</a>
                 <a href="{{ route('logout') }}">ログアウト</a>
             </div>
         </div>

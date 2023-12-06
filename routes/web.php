@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\BookmarkRecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\FavoriteController;
 
 // 新規会員登録フォーム表示
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -69,3 +70,6 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::post('/users/{user}/favorite', [FavoriteController::class, 'store'])->name('users.favorite');
+Route::get('/favorite/user', [FavoriteController::class, 'index'])->name('favorite.user');

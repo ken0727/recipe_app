@@ -22,10 +22,10 @@ class PostController extends Controller
     return view('index.show', ['allPosts' => $allPosts]);
 }
 
-    public function show(Post $post)
+public function show(Post $post)
 {
     $user = Auth::user(); 
-    return view('posts.show', ['post' => $post,'user']);
+    return view('posts.show', compact('post', 'user'));
 }
 // 画像保存処理を行うメソッド
 private function saveImage($post, $image)
