@@ -1,18 +1,20 @@
-// public/js/dropdown.js
-
+// dropdown.js
 $(document).ready(function () {
-    $("#user-dropdown").click(function (event) {
-        event.stopPropagation(); // クリックイベントが親に伝播しないようにする
-        $("#user-dropdown-content").toggle();
+    $("#user-icon-dropdown").click(function (event) {
+        event.stopPropagation();
+        // ドロップダウンの表示位置を調整
+        $("#user-dropdown-content").toggle().position({
+            my: "right top",
+            at: "right bottom",
+            of: this,
+            collision: "flipfit"
+        });
     });
 
     $(document).on("click", function (event) {
-        // ドロップダウン外をクリックした場合は非表示にする
-        if (
-            !$(event.target).closest("#user-dropdown").length &&
-            !$(event.target).closest("#user-dropdown-content").length
-        ) {
+        if (!$(event.target).closest("#user-icon-dropdown").length) {
             $("#user-dropdown-content").hide();
         }
     });
 });
+

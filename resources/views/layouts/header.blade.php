@@ -31,7 +31,6 @@
             </div>
             <div id="user-dropdown-content">
                 <a href="{{ route('my-page.show') }}">マイページ</a>
-                <!-- 他のユーザー情報に関連するリンクなどもここに追加できます -->
                 <a href="{{ route('bookmarks') }}">お気に入り投稿</a>
                 <a href="{{ route('favorite.user') }}">お気に入りユーザー</a>
                 <a href="{{ route('logout') }}">ログアウト</a>
@@ -39,26 +38,5 @@
         </div>
     </div>
     @endauth
-
-    <script>
-        $(document).ready(function () {
-            $("#user-icon-dropdown").click(function (event) {
-                event.stopPropagation();
-                // ドロップダウンの表示位置を調整
-                $("#user-dropdown-content").toggle().position({
-                    my: "right top",
-                    at: "right bottom",
-                    of: this,
-                    collision: "flipfit"
-                });
-            });
-
-            $(document).on("click", function (event) {
-                if (!$(event.target).closest("#user-icon-dropdown").length) {
-                    $("#user-dropdown-content").hide();
-                }
-            });
-        });
-    </script>
 
 </header>

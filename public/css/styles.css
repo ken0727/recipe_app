@@ -172,3 +172,29 @@ nav a {
     display: block;
     color: gray;
 }
+
+.favorite-button {
+    background-color: #3490dc;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #2779bd;
+}
+
+.favorite-add-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.favorite-add-button:hover {
+    background-color: #218838;
+}

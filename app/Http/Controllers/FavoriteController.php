@@ -26,7 +26,9 @@ class FavoriteController extends Controller
             'favorited_user_id' => $postUserID,
         ]);
 
-        return back()->with('success', 'ユーザーをお気に入りに追加しました。');
+        $userName = User::find($postUserID)->name;
+
+        return back()->with('success', $userName . 'をお気に入りに追加しました。');
     }
 
     return back()->with('error', 'このユーザーは登録済みです');
@@ -48,6 +50,16 @@ public function index()
     return view('favorites.index', compact('favoriteUsers'));
 }
 
+public function unfavoriteUser(User $user)
+    {
+        $currentUser = auth()->user();
+        $userName = $user->name; // $user パラメータを使用する
+
+        // お気に入りから削除
+        $currentUser->favorites()->where('favorited_user_id', $user->id)->delete();
+
+        return back()->with('success', $userName . 'をお気に入りから解除しました。');
+    }
 
 }
 

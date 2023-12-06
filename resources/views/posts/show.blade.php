@@ -73,14 +73,14 @@
     </div>
 
 @if(auth()->check() && auth()->user()->id !== $post->user_id)
-    <form action="{{ route('users.favorite', $user) }}" method="POST">
-        @csrf
-        <!-- hidden フィールドで現在ログインしているユーザーのIDを送信 -->
-        <input type="hidden" name="current_user_id" value="{{ auth()->user()->id }}">
-        <!-- hidden フィールドで $post->user_id を送信 -->
-        <input type="hidden" name="post_user_id" value="{{ $post->user_id }}">
-        <button type="submit">お気に入りユーザーに追加</button>
-    </form>
+<form action="{{ route('users.favorite', $user) }}" method="POST">
+    @csrf
+    <!-- hidden フィールドで現在ログインしているユーザーのIDを送信 -->
+    <input type="hidden" name="current_user_id" value="{{ auth()->user()->id }}">
+    <!-- hidden フィールドで $post->user_id を送信 -->
+    <input type="hidden" name="post_user_id" value="{{ $post->user_id }}">
+    <button type="submit" class="favorite-add-button">お気に入りユーザーに追加</button>
+</form>
 @endif
 
 @endsection

@@ -77,3 +77,4 @@ Route::get('/favorite/user', [FavoriteController::class, 'index'])->name('favori
 
 // ユーザーが投稿した一覧を表示する
 Route::get('/users/{user}/posts',  [UserController::class, 'userPosts'])->name('users.posts');
+Route::delete('/users/{user}/unfavorite', [FavoriteController::class, 'unfavoriteUser'])->name('users.unfavorite');

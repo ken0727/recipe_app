@@ -20,8 +20,16 @@
                         </div>
                     </a>
                     <span class="post-count">投稿数: {{ $favoriteUser->posts->count() }}</span>
+
+                    <!-- お気に入り解除ボタン -->
+<form action="{{ route('users.unfavorite', $favoriteUser) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="favorite-button">お気に入り解除</button>
+</form>
                 </li>
             @endforeach
         </ul>
     @endif
+
 @endsection
