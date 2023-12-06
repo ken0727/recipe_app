@@ -10,9 +10,17 @@
     @if($favoriteUsers->isEmpty())
         <p>お気に入りユーザーはありません。</p>
     @else
-        <ul>
+        <ul class="user-list">
             @foreach($favoriteUsers as $favoriteUser)
-                <li>{{ $favoriteUser->name }}</li>
+                <li class="user-item">
+                    <a href="{{ route('users.posts', $favoriteUser) }}" class="user-link">
+                        <img src="{{ asset('storage/' . $favoriteUser->image_path) }}" alt="{{ $favoriteUser->name }}" class="user-image">
+                        <div class="user-details">
+                            <span class="user-name">{{ $favoriteUser->name }}</span>
+                        </div>
+                    </a>
+                    <span class="post-count">投稿数: {{ $favoriteUser->posts->count() }}</span>
+                </li>
             @endforeach
         </ul>
     @endif

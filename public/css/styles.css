@@ -136,3 +136,39 @@ nav a {
     max-width: 200px;
     width: 200px;
 }
+
+
+.user-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-item {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex: 1 0 calc(33.33% - 40px); /* 3列で横幅を均等に分割 */
+}
+
+.user-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* 画像のアスペクト比を維持して要素にフィット */
+    border-radius: 50%; /* 画像を円形にするための角丸 */
+}
+
+.user-details {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.user-name {
+    display: block;
+    font-weight: bold;
+}
+
+.post-count {
+    display: block;
+    color: gray;
+}
