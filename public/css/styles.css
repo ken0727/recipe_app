@@ -131,3 +131,8 @@ nav a {
     padding: 10px;
     box-sizing: border-box;
 }
+
+#user-dropdown-content {
+    max-width: 200px;
+    width: 200px;
+}
