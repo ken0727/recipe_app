@@ -19,13 +19,19 @@
         @foreach ($posts as $recipe)
             <div class="col-md-4">
                 <div class="post-image-wrapper">
+                    <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->name }}" width="200" height="200">
+                    <h3>{{ $recipe->name }}</h3>
+                    
                     @if ($recipe->user_id == auth()->id())
-                        <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->name }}" width="300" height="200">
-                        <h3>{{ $recipe->name }}</h3>
-                        <a href="{{ route('posts.edit', $recipe) }}">編集</a>
-                    @else
-                        <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
-                        <h3>{{ $recipe->name }}</h3>
+                        <div class="btn-group" role="group">
+                            <a href="{{ route('posts.edit', $recipe) }}" class="btn btn-success">編集</a>
+                            <!-- 削除ボタンの追加 -->
+                            <form action="{{ route('posts.destroy', $recipe) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">削除</button>
+                            </form>
+                        </div>
                     @endif
                 </div>
             </div>

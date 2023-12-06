@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 @if ($post->image_path)
-                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 300px; height: 200px;">
+                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 200px; height: 200px;">
                 @else
                     <p>画像はありません。</p>
                 @endif

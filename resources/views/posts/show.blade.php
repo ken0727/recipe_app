@@ -9,7 +9,7 @@
                 @if ($post->image_path)
                     <div class="mb-3 mt-4">
                             <h3>{{ $post->name }}</h3>
-                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 300px; height: 200px;">
+                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 200px; height: 200px;">
                     </div>
                 @else
                     <p>画像はありません。</p>
@@ -36,9 +36,6 @@
                 @if (Auth::id() === $post->user_id)
                     <!-- 編集ボタン -->
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">編集</a>
-                    
-                        <!-- 削除ボタン -->
-                    <!-- destroy メソッドへの削除フォーム -->
                 <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline" onsubmit="return confirm('本当に削除しますか？');">
                     @csrf
                     @method('DELETE')

@@ -16,9 +16,9 @@
                         <div class="post-image-wrapper">
                         <a href="{{ route('posts.show', $post) }}" style="position: relative; display: inline-block;">
                             @if ($post->image_path)
-                                <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="300" height="200">
+                                <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="200" height="200">
                             @else
-                                <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
+                                <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="200" height="200">
                             @endif
                             @if (Auth::check() && Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
                                 <!-- ★マークを表示 -->
