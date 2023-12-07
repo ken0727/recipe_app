@@ -13,12 +13,16 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function index()
+public function index(Request $request)
 {
-    // 全ユーザーの投稿を取得
-    $allPosts = Post::with('user')->get(); 
+    $searchKeyword = $request->input('search');
 
-    
+    $allPosts = Post::with('user')
+        ->when($searchKeyword, function ($query) use ($searchKeyword) {
+            return $query->where('name', 'like', '%' . $searchKeyword . '%');
+        })
+        ->get();
+
     return view('index.show', ['allPosts' => $allPosts]);
 }
 

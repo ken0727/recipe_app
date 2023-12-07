@@ -44,12 +44,23 @@ class BookmarkRecipeController extends Controller
         return redirect()->back()->with('error', 'エラーが発生しました。');
     }
 
-    public function index()
-    {
-        // ログインユーザーがブックマークしたレシピを取得
-        $bookmarkedRecipes = Auth::user()->bookmarkRecipes;
+public function index(Request $request)
+{
+    // ログインユーザーがブックマークしたレシピを常に取得
+    $bookmarkedRecipes = Auth::user()->bookmarkRecipes;
 
-        // ブックマークされたレシピ一覧のビューを表示
-        return view('bookmark_recipe.index', compact('bookmarkedRecipes'));
-    }
+    $searchKeyword = $request->input('search');
+
+    // 検索ワードがある場合、検索を行う
+    if ($searchKeyword) {
+        $searchPosts = Post::with('user')
+            ->where('name', 'like', '%' . $searchKeyword . '%')
+            ->get();
+        return view('bookmark_recipe.index', compact('bookmarkedRecipes', 'searchPosts'));
+    } 
+        
+    // ブックマークされたレシピ一覧と検索結果のビューを表示
+    return view('bookmark_recipe.index', compact('bookmarkedRecipes'));
+}
+
 }

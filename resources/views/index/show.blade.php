@@ -7,6 +7,9 @@
 @section('content')
     <h1>投稿一覧</h1>
 
+@component('components.SearchForm', ['action' => route('posts.index'), 'method' => 'GET', 'placeholder' => 'キーワードを入力', 'name' => 'search', 'buttonText' => '検索'])
+@endcomponent
+
     @if ($allPosts->isNotEmpty())
 
         @foreach ($allPosts->chunk(3) as $chunk)
