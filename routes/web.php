@@ -33,8 +33,6 @@ Route::get('/signup', function () {
 })->name('signup');
 
 
-
-//
 Route::middleware(['auth'])->group(function () {
     // ユーザーごとの投稿一覧を表示するルート
     Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.posts.index');
@@ -76,7 +74,7 @@ Route::post('/users/{user}/favorite', [FavoriteController::class, 'store'])->nam
 Route::get('/favorite/user', [FavoriteController::class, 'index'])->name('favorite.user');
 
 // ユーザーが投稿した一覧を表示する
-Route::get('/users/{user}/posts',  [UserController::class, 'userPosts'])->name('users.posts');
+Route::get('/users/{user}/posts',  [UserController::class, 'index'])->name('users.posts');
 Route::delete('/users/{user}/unfavorite', [FavoriteController::class, 'unfavoriteUser'])->name('users.unfavorite');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/bookmarks/search', [BookmarkRecipeController::class, 'index'])->name('bookmarks.index');

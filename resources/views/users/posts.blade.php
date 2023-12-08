@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 
 @section('title', $user->name . 'の投稿一覧')
@@ -35,4 +33,3 @@
         <p>投稿はありません。</p>
     @endif
 @endsection
-
