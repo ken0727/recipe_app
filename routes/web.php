@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 
 // 新規会員登録フォーム表示
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -78,3 +79,4 @@ Route::get('/users/{user}/posts',  [UserController::class, 'index'])->name('user
 Route::delete('/users/{user}/unfavorite', [FavoriteController::class, 'unfavoriteUser'])->name('users.unfavorite');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/bookmarks/search', [BookmarkRecipeController::class, 'index'])->name('bookmarks.index');
+Route::post('/toggle-like/{post}', [LikeController::class, 'toggleLike'])->name('toggle-like');

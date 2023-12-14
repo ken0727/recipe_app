@@ -14,8 +14,6 @@ class UserController extends Controller
         {
         $posts = $user->posts; // ユーザーが投稿した一覧を取得
 
-
-
         return view('users.posts', compact('user', 'posts'));
         }
 

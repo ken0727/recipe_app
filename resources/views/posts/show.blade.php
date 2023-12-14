@@ -80,4 +80,31 @@
 </form>
 @endif
 
+
+<form id="like-form" action="{{ route('toggle-like', ['post' => $post->id]) }}" method="POST">
+    @csrf
+    @method('POST')
+
+    <button type="submit" class="like-button" data-post-id="{{ $post->id }}">
+        @if($post->isLikedBy(Auth::user()))
+            イイネを解除する
+        @else
+            イイネする
+        @endif
+    </button>
+</form>
+
+
 @endsection
+
+
+
+<script>
+ 
+document.querySelectorAll('.like-button').forEach(button => {
+    button.addEventListener('click', function () {
+        console.log('ボタンがクリックされました');
+    });
+});
+</script>
+

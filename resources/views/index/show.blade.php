@@ -38,3 +38,4 @@
         <p>投稿はありません。</p>
     @endif
 @endsection
+

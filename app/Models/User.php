@@ -71,6 +71,8 @@ public function favoriteUsers()
         return $this->hasMany(Favorite::class, 'user_id');
     }
 
+    
+
 
 
 }
