@@ -19,7 +19,7 @@ class LikeController extends Controller
         if ($like) {
             // いいねがすでに存在する場合は削除
             $like->delete();
-            return redirect()->back()->with('success', 'イイネを解除しました');
+            return redirect()->back()->with('success', 'いいねを解除しました');
         } else {
             // いいねが存在しない場合は追加
             $like = new Like();
@@ -28,6 +28,6 @@ class LikeController extends Controller
             $like->save();
         }
 
-        return redirect()->back()->with('success', 'イイネしました');
+        return redirect()->back()->with('success', 'いいねしました');
     }
 }

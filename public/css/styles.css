@@ -200,3 +200,40 @@ nav a {
 .favorite-add-button:hover {
     background-color: #218838;
 }
+
+/* public/css/styles.css */
+
+.ranking-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 投稿間のスペースを設定 */
+}
+
+.ranking-post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    width: 50%; /* 幅を50%に */
+   margin: 0 auto; /* 左右のマージンを自動で設定して中央に配置 */
+}
+
+
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.post-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.like-count {
+    color: #007bff;
+}
+
+.crown-icon {
+    width: 20px; /* アイコンの幅を調整 */
+    margin-right: 5px; /* アイコンとテキストの間隔を調整 */
+}

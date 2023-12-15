@@ -80,3 +80,4 @@ Route::delete('/users/{user}/unfavorite', [FavoriteController::class, 'unfavorit
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/bookmarks/search', [BookmarkRecipeController::class, 'index'])->name('bookmarks.index');
 Route::post('/toggle-like/{post}', [LikeController::class, 'toggleLike'])->name('toggle-like');
+Route::get('/ranking', [IndexController::class, 'ranking'])->name('ranking');

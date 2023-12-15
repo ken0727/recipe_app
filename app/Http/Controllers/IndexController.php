@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User; // User モデルを読み込む
 use App\Models\Post; // Post モデルを読み込む
+use App\Models\Like; // Like モデルを読み込む
 use Illuminate\Http\Request;
 
 
@@ -22,6 +23,13 @@ public function show($user_id)
         // ユーザーが存在しない場合の処理
         echo "投稿がありません";
     }
+}
+
+public function ranking()
+{
+    $rankingPosts = Post::getRanking();
+
+    return view('index.ranking', ['rankingPosts' => $rankingPosts]);
 }
 
 }

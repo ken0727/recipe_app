@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Collection; // 追加
 
 class Post extends Model
 {
@@ -40,7 +41,22 @@ class Post extends Model
         return $this->likes()->where('user_id', $user->id)->exists();
     }
 
+    // この投稿のいいね数を取得
+    public function getLikeCountAttribute(): int
+    {
+        return $this->likes()->count();
+    }
 
+    // いいねのランキングを取得（例: 上位5件）
+    public static function getRanking(): Collection
+    {
+        return static::withCount('likes')
+            ->where('likes_count', '>', 0) // いいねが0でないものを抽出
+            ->orderByDesc('likes_count')
+            ->orderBy('created_at') // 追加: 作成日時でソート（同じいいね数の場合に古い方が上にくるように）
+            ->take(10) // 上位5件のみ取得
+            ->get();
+    }
 
     
 }

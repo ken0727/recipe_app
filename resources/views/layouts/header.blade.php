@@ -15,6 +15,10 @@
     </div>
 
     <div class="top-link">
+        <a href="{{ route('ranking') }}">ランキング</a>
+    </div>
+
+    <div class="top-link">
         <!-- ユーザーネームを表示 -->
         {{ Auth::check() ? Auth::user()->name : '' }}
     </div>

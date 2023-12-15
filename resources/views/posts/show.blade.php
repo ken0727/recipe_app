@@ -87,9 +87,9 @@
 
     <button type="submit" class="like-button" data-post-id="{{ $post->id }}">
         @if($post->isLikedBy(Auth::user()))
-            イイネを解除する
+            いいねを解除する
         @else
-            イイネする
+            いいねする
         @endif
     </button>
 </form>

@@ -29,6 +29,19 @@
                             @endif
                             <h3>{{ $post->name }}</h3>
                         </a>
+
+                        <form id="like-form" action="{{ route('toggle-like', ['post' => $post->id]) }}" method="POST">
+    @csrf
+    @method('POST')
+
+    <button type="submit" class="like-button" data-post-id="{{ $post->id }}">
+        @if($post->isLikedBy(Auth::user()))
+            いいねを解除する
+        @else
+            いいねする
+        @endif
+    </button>
+</form>
                     </div>
                     </div>
                 @endforeach
