@@ -56,22 +56,30 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function bookmarkRecipes()
-{
-    return $this->hasMany(BookmarkRecipe::class);
-}
+        public function bookmarkRecipes()
+    {
+        return $this->hasMany(BookmarkRecipe::class);
+    }
 
-public function favoriteUsers()
-{
-    return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorited_user_id')->withTimestamps();
-}
+    public function favoriteUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorited_user_id')->withTimestamps();
+    }
     // ユーザーがお気に入りした投稿を取得
     public function favorites(): HasMany
     {
         return $this->hasMany(Favorite::class, 'user_id');
     }
 
-    
+    // ユーザーを削除する前に、関連するデータも削除する
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->posts()->delete(); // ユーザーに紐づく投稿も削除
+        });
+    }
 
 
 

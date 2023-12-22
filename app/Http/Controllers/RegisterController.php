@@ -21,12 +21,13 @@ class RegisterController extends Controller
             'password' => 'required|string|min:2',
         ]);
 
+        
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
-
+        dd($request);
         return redirect('/login')->with('success', '新規会員登録が完了しました。ログインしてください。');
     }
 

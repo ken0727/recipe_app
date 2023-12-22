@@ -84,8 +84,7 @@
 <form id="like-form" action="{{ route('toggle-like', ['post' => $post->id]) }}" method="POST">
     @csrf
     @method('POST')
-
-    <button type="submit" class="like-button" data-post-id="{{ $post->id }}">
+    <button type="submit" class="btn btn-outline-danger border-0" data-post-id="{{ $post->id }}">
         @if($post->isLikedBy(Auth::user()))
             いいねを解除する
         @else

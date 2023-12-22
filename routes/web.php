@@ -21,23 +21,12 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/', function () {
-    return view('top');
-});
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
-
-
+Route::get('/', function () {return view('top');})->name('top');
+Route::get('/login', function () {return view('login');})->name('login');
+Route::get('/signup', function () {return view('signup');})->name('signup');
 Route::middleware(['auth'])->group(function () {
     // ユーザーごとの投稿一覧を表示するルート
-    Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.posts.index');
-});
+Route::get('/index/{user_id}', [IndexController::class, 'show'])->name('user.posts.index');});
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');//login
 Route::post('/login', [LoginController::class, 'login']);//login
@@ -81,3 +70,4 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/bookmarks/search', [BookmarkRecipeController::class, 'index'])->name('bookmarks.index');
 Route::post('/toggle-like/{post}', [LikeController::class, 'toggleLike'])->name('toggle-like');
 Route::get('/ranking', [IndexController::class, 'ranking'])->name('ranking');
+Route::delete('/withdraw', [UserController::class, 'withdraw'])->name('withdraw');

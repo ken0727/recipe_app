@@ -31,6 +31,8 @@
             <button type="submit" class="btn btn-primary">新規登録</button>
         </div>
     </form>
+<div class="top-link header-button" style="text-align: right;">
+    <a href="{{ route('top') }}">TOPへ</a>
 </div>
 
 @endsection

@@ -38,6 +38,25 @@
                 <a href="{{ route('bookmarks') }}">お気に入り投稿</a>
                 <a href="{{ route('favorite.user') }}">お気に入りユーザー</a>
                 <a href="{{ route('logout') }}">ログアウト</a>
+<div class="top-link header-button">
+    <form id="withdraw-form" method="post" action="{{ route('withdraw') }}">
+        @csrf
+        @method('delete')
+        <!-- JavaScriptを使用して確認メッセージを表示し、ユーザーがOKを選択したらフォームをサブミット -->
+        <a href="javascript:void(0);" class="withdraw-link" onclick="confirmWithdraw()">退会する</a>
+        <script>
+            function confirmWithdraw() {
+                // 確認ダイアログを表示
+                var confirmation = confirm("本当に退会しますか？");
+
+                // ユーザーがOKを選択した場合、フォームをサブミット
+                if (confirmation) {
+                    document.getElementById('withdraw-form').submit();
+                }
+            }
+        </script>
+    </form>
+</div>
             </div>
         </div>
     </div>

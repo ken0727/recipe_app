@@ -34,11 +34,12 @@
     @csrf
     @method('POST')
 
-    <button type="submit" class="like-button" data-post-id="{{ $post->id }}">
+<form>
+    <button type="submit" class="btn btn-outline-danger border-0" data-post-id="{{ $post->id }}">
         @if($post->isLikedBy(Auth::user()))
-            いいねを解除する
+            <i class="fas fa-heart"></i>
         @else
-            いいねする
+            <i class="far fa-heart"></i> 
         @endif
     </button>
 </form>
