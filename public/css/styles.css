@@ -241,3 +241,12 @@ nav a {
 .right-align {
     float: right;
 }
+
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.mojiwhite{
+    color: #ffffff;
+}

@@ -27,10 +27,12 @@
                             <button type="submit" class="btn btn-primary">ログイン</button>
                         </div>
                     </form>
+                        <div class="top-link header-button" style="text-align: right;">
+                            <a href="{{ route('top') }}">TOPへ</a>
+                        </div>
                 </div>
             </div>
         </div>
-
 
 @endsection
 

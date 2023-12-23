@@ -12,6 +12,7 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\TestController;
 
 // 新規会員登録フォーム表示
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -71,3 +72,5 @@ Route::get('/bookmarks/search', [BookmarkRecipeController::class, 'index'])->nam
 Route::post('/toggle-like/{post}', [LikeController::class, 'toggleLike'])->name('toggle-like');
 Route::get('/ranking', [IndexController::class, 'ranking'])->name('ranking');
 Route::delete('/withdraw', [UserController::class, 'withdraw'])->name('withdraw');
+Route::get('/test/search', [TestController::class, 'search'])->name('test.search');
+Route::get('/test', [TestController::class, 'index'])->name('test.index');

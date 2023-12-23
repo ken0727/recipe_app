@@ -24,7 +24,9 @@
                     
                     @if ($recipe->user_id == auth()->id())
                         <div class="btn-group" role="group">
+                            <div class="mojiwhite">
                             <a href="{{ route('posts.edit', $recipe) }}" class="btn btn-success">編集</a>
+                            </div>
                             <!-- 削除ボタンの追加 -->
                             <form action="{{ route('posts.destroy', $recipe) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                                 @csrf
