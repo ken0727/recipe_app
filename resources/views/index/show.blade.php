@@ -9,6 +9,8 @@
 
 @component('components.SearchForm', ['action' => route('posts.index'), 'method' => 'GET', 'placeholder' => 'キーワードを入力', 'name' => 'search', 'buttonText' => '検索'])
 @endcomponent
+<!-- 検索フォーム -->
+<x-search :url="url('/test/search')" :results="$posts ?? []" searchType="" />
 
     @if ($allPosts->isNotEmpty())
 

@@ -7,6 +7,8 @@
 
     @component('components.SearchForm', ['action' => route('bookmarks.index'), 'method' => 'GET', 'placeholder' => 'キーワードを入力', 'name' => 'search', 'buttonText' => '検索'])
     @endcomponent
+    <!-- 検索フォーム -->
+    <x-search :url="url('/test/search')" :results="$posts ?? []" searchType="bookmarked" />
 
     @if(request()->has('search') && !empty($searchPosts))
         <div class="row">

@@ -12,6 +12,8 @@
 
 <h2>自分の投稿一覧</h2>
 
+<x-search :url="url('/test/search')" :results="$posts" searchType="user" />
+
 @if ($posts->isEmpty())
     <p>投稿はありません。</p>
 @else
