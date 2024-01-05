@@ -6,16 +6,18 @@
         <button type="button" onclick="executeSearch()">検索</button>
     </form>
 
-    <div id="searchResults"></div>
+    @if(isset($searchResults) && !empty($searchResults))
+        <div id="searchResults">
+            <!-- 検索結果を表示する部分 -->
+            @foreach($searchResults as $result)
+                <p>{{ $result }}</p> <!-- 適切な表示方法に変更する -->
+            @endforeach
+        </div>
+    @else
+        <div id="searchResults"></div>
+    @endif
 
     <script>
-        // Enter キーの検知
-        $('#searchInput').on('keyup', function (e) {
-            if (e.key === 'Enter') {
-                executeSearch();
-            }
-        });
-
         function executeSearch() {
             var searchQuery = $('#searchInput').val();
             var searchType = '{{ $searchType }}'; // ビューから直接渡された値を使用
@@ -23,7 +25,7 @@
             $.ajax({
                 url: '{{ $url }}',
                 type: 'GET',
-                data: { search: searchQuery, search_type: searchType }, // 検索対象をリクエストに含める
+                data: { search: searchQuery, search_type: searchType },
                 success: function (data) {
                     // 検索結果がある場合は表示、ない場合は非表示
                     if (data) {

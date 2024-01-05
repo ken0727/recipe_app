@@ -26,23 +26,3 @@
     }
 </style>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    function executeSearch() {
-        var searchQuery = $('#searchInput').val();
-        var currentUrl = $('#searchForm').attr('action');
-
-        $.ajax({
-            url: currentUrl,
-            type: '{{ $method }}',
-            data: { '{{ $name }}': searchQuery },
-            success: function (data) {
-                // 検索結果を表示する場所に結果をセットする（例: #searchResults）
-                $('#searchResults').html(data);
-            },
-            error: function (error) {
-                console.error('検索エラー:', error);
-            }
-        });
-    }
-</script>

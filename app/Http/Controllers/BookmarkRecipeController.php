@@ -53,14 +53,17 @@ public function index(Request $request)
 
     // 検索ワードがある場合、検索を行う
     if ($searchKeyword) {
-        $searchPosts = Post::with('user')
+        $bookmarkedPosts = Post::with('user')
             ->where('name', 'like', '%' . $searchKeyword . '%')
             ->get();
-        return view('bookmark_recipe.index', compact('bookmarkedRecipes', 'searchPosts'));
+        return view('bookmark_recipe.index', compact('bookmarkedRecipes', 'bookmarkedPosts'));
     } 
         
     // ブックマークされたレシピ一覧と検索結果のビューを表示
     return view('bookmark_recipe.index', compact('bookmarkedRecipes'));
 }
+
+
+
 
 }

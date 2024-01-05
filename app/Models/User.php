@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Post;
+use App\Models\BookmarkRecipe;
 
 class User extends Authenticatable
 {
@@ -60,6 +62,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(BookmarkRecipe::class);
     }
+    
+
 
     public function favoriteUsers()
     {

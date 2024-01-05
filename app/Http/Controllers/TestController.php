@@ -15,6 +15,7 @@ class TestController extends Controller
         $postNames = Post::pluck('name'); // 例として、全ての投稿の名前を取得
 
         return view('test.index', compact('postNames'));
+        
     }
 
     public function search(Request $request)
@@ -30,11 +31,15 @@ class TestController extends Controller
                 $posts = auth()->user()->posts()->where('name', 'like', '%' . $searchKeyword . '%')->get();
                 break;
             
-            case 'bookmarked':
-                // ブックマークした投稿から検索
-                
-                $posts = auth()->user()->bookmark_recipes()->where('name', 'like', '%' . $searchKeyword . '%')->get();
-                break;
+
+                case 'bookmarked':
+            // ブックマークした投稿から検索
+            $user = auth()->user();
+            $bookmarkedPostIds = $user->bookmarkRecipes()->pluck('post_id');
+            $posts = Post::whereIn('id', $bookmarkedPostIds)
+                ->where('name', 'like', '%' . $searchKeyword . '%')
+                ->get();
+            break;
 
             default:
                 // 全投稿から検索
@@ -42,9 +47,11 @@ class TestController extends Controller
                 break;
         }
 
-        return view('test.search_results', ['posts' => $posts]);
+        return view('test.search_results', ['posts' => $posts, 'searchKeyword' => $searchKeyword]);
     }
 }
     
+
+
 
 

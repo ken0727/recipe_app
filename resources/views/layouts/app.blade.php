@@ -27,10 +27,14 @@
     <div class="alert alert-danger">
         {{ session('error') }}
     </div>
-@endif
-    
-    <div class="container">
-        @yield('content')
-    </div>
+    @endif
+
+    <div id="postListContainer">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
+
+
 </body>
 </html>
