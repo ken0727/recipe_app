@@ -12,8 +12,9 @@
 
 <h2>自分の投稿一覧</h2>
 
-<x-search :url="url('/test/search')" :results="$posts" searchType="user" />
+@include('components.search_box', ['url' => url('/test/search'), 'searchType' => 'user'])
 
+<div id="postList">
 @if ($posts->isEmpty())
     <p>投稿はありません。</p>
 @else
@@ -23,13 +24,13 @@
                 <div class="post-image-wrapper">
                     <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->name }}" width="200" height="200">
                     <h3>{{ $recipe->name }}</h3>
-                    
+                    <!--
                     @if ($recipe->user_id == auth()->id())
                         <div class="btn-group" role="group">
                             <div class="mojiwhite">
                             <a href="{{ route('posts.edit', $recipe) }}" class="btn btn-success">編集</a>
                             </div>
-                            <!-- 削除ボタンの追加 -->
+                            
                             <form action="{{ route('posts.destroy', $recipe) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                                 @csrf
                                 @method('DELETE')
@@ -37,10 +38,12 @@
                             </form>
                         </div>
                     @endif
+                    <-->
                 </div>
             </div>
         @endforeach
     </div>
 @endif
+</div>
 
 @endsection

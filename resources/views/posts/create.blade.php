@@ -5,6 +5,7 @@
 @section('title', "新規投稿")
 
 @section('content')
+
     <div class="container">
                 <div class="row justify-content-center">
             <div class="col-md-6">

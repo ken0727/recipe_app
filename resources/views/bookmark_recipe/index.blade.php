@@ -5,8 +5,9 @@
 @section('content')
     <h1>ブックマーク一覧</h1>
 
-    <x-search :url="url('/test/search')" :results="$posts ?? []" searchType="bookmarked" />
+    @include('components.search_box', ['url' => url('/test/search'), 'searchType' => 'bookmarked'])
 
+<div id="postList">
     @if (isset($bookmarkedRecipes) && !$bookmarkedRecipes->isEmpty())
 
         @foreach ($bookmarkedRecipes->chunk(3) as $chunk)
@@ -33,4 +34,5 @@
         <p>ブックマークされたレシピはありません。</p>
 
     @endif
+    </div>
 @endsection

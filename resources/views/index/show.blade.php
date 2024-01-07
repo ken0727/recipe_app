@@ -6,9 +6,9 @@
     <h1>投稿一覧</h1>
 
     <!-- 検索フォーム -->
-    @component('components.SearchForm', ['action' => route('posts.index'), 'method' => 'GET', 'placeholder' => 'キーワードを入力', 'name' => 'search', 'buttonText' => '検索'])
-    @endcomponent
+    @include('components.search_box', ['url' => url('/test/search'), 'searchType' => 'from_index'])
 
+    <div id="postList">
     @if (isset($allPosts) && $allPosts->isNotEmpty())
         @foreach ($allPosts->chunk(3) as $chunk)
             <div class="row">
@@ -46,4 +46,5 @@
     @else
         <p>投稿はありません。</p>
     @endif
+    </div>
 @endsection

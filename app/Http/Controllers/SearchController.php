@@ -7,22 +7,16 @@ use App\Models\BookmarkRecipe;
 use App\Models\Post; 
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class SearchController extends Controller
 {
-    public function index()
-    {
 
-        $postNames = Post::pluck('name'); // 例として、全ての投稿の名前を取得
-
-        return view('test.index', compact('postNames'));
-        
-    }
 
     public function search(Request $request)
     {
         
         $searchKeyword = $request->input('search');
         $searchType = $request->input('search_type', 'all'); // デフォルトは全投稿
+        
         
         switch ($searchType) {
             
@@ -44,14 +38,12 @@ class TestController extends Controller
             default:
                 // 全投稿から検索
                 $posts = Post::where('name', 'like', '%' . $searchKeyword . '%')->get();
-                break;
+            break;
         }
 
         return view('test.search_results', ['posts' => $posts, 'searchKeyword' => $searchKeyword]);
     }
-}
+
     
-
-
-
+}
 

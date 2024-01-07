@@ -29,11 +29,11 @@
     </div>
     @endif
 
-    <div id="postListContainer">
+
             <div class="container">
                 @yield('content')
             </div>
-        </div>
+
 
 
 </body>
