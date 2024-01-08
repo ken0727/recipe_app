@@ -30,8 +30,6 @@
                                         </button>
                                     </form>
                                 @endif
-                                
-                                
                             </a>
                         </div>
                     </div>

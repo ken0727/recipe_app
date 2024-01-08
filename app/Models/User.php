@@ -63,8 +63,6 @@ class User extends Authenticatable
         return $this->hasMany(BookmarkRecipe::class);
     }
     
-
-
     public function favoriteUsers()
     {
         return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorited_user_id')->withTimestamps();

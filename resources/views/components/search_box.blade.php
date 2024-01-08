@@ -26,6 +26,12 @@
 
         function executeSearch() {
             var searchQuery = $('#searchInput').val();
+            
+            // 検索ボックスが空であれば検索を実行しない
+            if (searchQuery.trim() === '') {
+                return;
+            }
+            
             var searchType = '{{ $searchType }}';
 
             $.ajax({
@@ -36,7 +42,7 @@
                     if (data) {
                         $('#searchResults').html(data);
                         $('#searchResults').show();
-
+                        
                         // 他のビューを非表示にする
                         $('#postList').hide();
                         $('#searchResultsContainer').hide();
@@ -52,29 +58,3 @@
         }
     </script>
 </div>
-
-
-<style>
-    /* カスタムスタイルの追加 */
-    .my-custom-form {
-        /* ここにフォーム全体のスタイルを追加 */
-        margin-bottom: 20px;
-    }
-
-    .my-custom-input {
-        /* ここにテキスト入力部分のスタイルを追加 */
-        border-color: #a9a9a9;
-        border-radius: 5px 0 0 5px; /* 左側の角を丸くする */
-        width: 300px; /* 入力スペースの幅を広げる */
-        
-    }
-
-    .my-custom-button {
-        /* ここにボタンのスタイルを追加 */
-        background-color: #696969;
-        color: #ffffff;
-        border-radius: 0 5px 5px 0; /* 右側の角を丸くする */
-
-        cursor: pointer; /* ポインターを表示 */
-    }
-</style>

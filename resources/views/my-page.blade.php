@@ -22,8 +22,10 @@
         @foreach ($posts as $recipe)
             <div class="col-md-4">
                 <div class="post-image-wrapper">
+                    <a href="{{ route('posts.show', $recipe) }}">
                     <img src="{{ asset('storage/' . $recipe->image_path) }}" alt="{{ $recipe->name }}" width="200" height="200">
                     <h3>{{ $recipe->name }}</h3>
+                    </a>
                     <!--
                     @if ($recipe->user_id == auth()->id())
                         <div class="btn-group" role="group">
