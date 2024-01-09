@@ -38,7 +38,8 @@
                 <a href="{{ route('bookmarks') }}">お気に入り投稿</a>
                 <a href="{{ route('favorite.user') }}">お気に入りユーザー</a>
                 <a href="{{ route('logout') }}">ログアウト</a>
-<div class="top-link header-button">
+            <div class="top-link header-button">
+
     <form id="withdraw-form" method="post" action="{{ route('withdraw') }}">
         @csrf
         @method('delete')

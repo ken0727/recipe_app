@@ -8,7 +8,7 @@
     <div class="ranking-posts">
         @foreach ($rankingPosts as $key => $post)
             <div class="ranking-post">
-                <p class="post-name">
+                <div class="medal-container">
                     @if ($key === 0)
                         <img src="{{ asset('storage/gold-crown-icon.png') }}" alt="Gold Crown" class="crown-icon">
                     @elseif ($key === 1)
@@ -16,8 +16,10 @@
                     @elseif ($key === 2)
                         <img src="{{ asset('storage/bronze-crown-icon.png') }}" alt="Bronze Crown" class="crown-icon">
                     @endif
+                <p class="post-name">
                     {{ $post->name }}
                 </p>
+                </div>
                 @if ($post->image_path)
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="post-image" width="200" height="200">
                 @else

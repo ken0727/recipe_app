@@ -9,7 +9,7 @@
                 @if ($post->image_path)
                     <div class="mb-3 mt-4">
                             <h3>{{ $post->name }}</h3>
-                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid rounded mb-3" style="width: 200px; height: 200px;">
+                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid img-smaller rounded mb-3">
                     </div>
                 @else
                     <p>画像はありません。</p>
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 @if (Auth::id() === $post->user_id)
                     <!-- 編集ボタン -->
-                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-success">編集</a>
+                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-success mojiwhite">編集</a>
                 <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline" onsubmit="return confirm('本当に削除しますか？');">
                     @csrf
                     @method('DELETE')
@@ -99,7 +99,7 @@
 
 
 <script>
- 
+
 document.querySelectorAll('.like-button').forEach(button => {
     button.addEventListener('click', function () {
         console.log('ボタンがクリックされました');

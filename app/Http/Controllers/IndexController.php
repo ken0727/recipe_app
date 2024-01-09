@@ -30,6 +30,7 @@ public function ranking()
     $rankingPosts = Post::getRanking();
 
     return view('index.ranking', ['rankingPosts' => $rankingPosts]);
+    
 }
 
 }

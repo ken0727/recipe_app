@@ -213,10 +213,9 @@ nav a {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-    width: 50%; /* 幅を50%に */
+    width: 80%; /* 幅を50%に */
    margin: 0 auto; /* 左右のマージンを自動で設定して中央に配置 */
 }
-
 
 
 .post-image {
@@ -251,6 +250,11 @@ a {
     color: #ffffff;
 }
 
+a.mojiwhite {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
     /* サーチボックス */
     .my-custom-form {
         /* ここにフォーム全体のスタイルを追加 */
@@ -261,8 +265,7 @@ a {
         /* ここにテキスト入力部分のスタイルを追加 */
         border-color: #a9a9a9;
         border-radius: 5px 0 0 5px; /* 左側の角を丸くする */
-        width: 300px; /* 入力スペースの幅を広げる */
-        
+        width: 70%; /* 入力スペースの幅を広げる */
     }
 
     .my-custom-button {
@@ -272,3 +275,45 @@ a {
         border-radius: 0 5px 5px 0; /* 右側の角を丸くする */
         cursor: pointer; /* ポインターを表示 */
     }
+
+    .img-smaller {
+    max-width: 80%; /* 例: 幅を80%に制限 */
+    height: auto; /* アスペクト比を保持 */
+}
+
+
+@media only screen and (max-width: 400px) {
+    header {
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .top-links {
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .top-link,
+    .user-info {
+        margin-bottom: 10px;
+    }
+
+    .top-link:first-child {
+        margin-right: 0;
+    }
+
+    .mb-3 {
+        text-align: center; 
+    }
+
+    .ranking-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .medal-container {
+        margin-bottom: 10px; /* メダルと名前の間の余白を設定 */
+    }
+}
+
