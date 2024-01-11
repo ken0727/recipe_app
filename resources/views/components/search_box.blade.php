@@ -1,12 +1,15 @@
 <!-- resources/views/components/search_box.blade.php -->
 
-<div class="my-custom-form"> 
+<div class="my-custom-form">
     <form id="searchForm">
-        <input type="text" name="search" id="searchInput" class="my-custom-input"> 
+        <div class="search-wrapper">
+            <input type="text" name="search" id="searchInput" class="my-custom-input" placeholder="検索したいレシピ名を入力">
+            <button type="button" onclick="executeSearch()" class="my-custom-button">
+                <i class="fas fa-search"></i> <!-- 虫眼鏡アイコン -->
+            </button>
+        </div>
         <input type="hidden" name="search_type" value="{{ $searchType }}">
-        <button type="button" onclick="executeSearch()" class="my-custom-button">検索</button> 
     </form>
-
     <div id="searchResults" style="display: none;"></div>
 
 

@@ -1,4 +1,5 @@
 /* public/css/styles.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
 body {
     font-family: 'Arial', sans-serif;
@@ -266,15 +267,31 @@ a.mojiwhite {
         border-color: #a9a9a9;
         border-radius: 5px 0 0 5px; /* 左側の角を丸くする */
         width: 70%; /* 入力スペースの幅を広げる */
+        position: relative; /* 追加 */
     }
 
-    .my-custom-button {
-        /* ここにボタンのスタイルを追加 */
-        background-color: #696969;
-        color: #ffffff;
-        border-radius: 0 5px 5px 0; /* 右側の角を丸くする */
-        cursor: pointer; /* ポインターを表示 */
-    }
+.my-custom-button {
+    background-color: transparent;
+    color: #696969; /* アイコンの色を設定 */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    transform: translateX(-110%);
+    
+}
+
+.my-custom-button::before {
+    content: '\f002'; /* FontAwesomeの虫眼鏡アイコン */
+    font-family: 'Font Awesome 5 Free'; /* FontAwesomeのフォントファミリー */
+    font-size: 20px;
+    vertical-align: middle; /* 垂直方向の中央寄せ */
+
+}
+
+    .my-custom-button::before {
+    color: #696969;
+}
+
 
     .img-smaller {
     max-width: 80%; /* 例: 幅を80%に制限 */
@@ -315,5 +332,11 @@ a.mojiwhite {
     .medal-container {
         margin-bottom: 10px; /* メダルと名前の間の余白を設定 */
     }
+
+    .my-custom-input::placeholder {
+        font-size: 10px; /* スマートフォンの場合のプレースホルダーのフォントサイズを設定 */
+    }
+
+    
 }
 
