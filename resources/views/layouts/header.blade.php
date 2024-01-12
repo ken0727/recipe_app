@@ -7,21 +7,9 @@
 
 <header>
     <div class="top-link">
-        <a href="/index/{{ Auth::user()->id }}">TOP</a>
+        <a href="/index/{{ Auth::user()->id }}"><i class="fas fa-home"></i>TOP</a>
     </div>
 
-    <div class="top-link">
-        <a href="{{ route('posts.create') }}">投稿する</a>
-    </div>
-
-    <div class="top-link">
-        <a href="{{ route('ranking') }}">ランキング</a>
-    </div>
-
-    <div class="top-link">
-        <!-- ユーザーネームを表示 -->
-        {{ Auth::check() ? Auth::user()->name : '' }}
-    </div>
 
     @auth
     <div class="user-info">
@@ -32,11 +20,13 @@
                 @else
                     <img src="{{ asset('storage/Noimage.jpeg') }}" alt="No Image">
                 @endif
+                <div class="top-link">
+        <span>Myメニュー</span>
+    </div>
             </div>
+            
             <div id="user-dropdown-content">
                 <a href="{{ route('my-page.show') }}">マイページ</a>
-                <a href="{{ route('bookmarks') }}">お気に入り投稿</a>
-                <a href="{{ route('favorite.user') }}">お気に入りユーザー</a>
                 <a href="{{ route('logout') }}">ログアウト</a>
             <div class="top-link header-button">
 
@@ -49,7 +39,6 @@
             function confirmWithdraw() {
                 // 確認ダイアログを表示
                 var confirmation = confirm("本当に退会しますか？");
-
                 // ユーザーがOKを選択した場合、フォームをサブミット
                 if (confirmation) {
                     document.getElementById('withdraw-form').submit();
@@ -57,10 +46,27 @@
             }
         </script>
     </form>
+
 </div>
             </div>
         </div>
     </div>
     @endauth
+
+    <style>
+    
+    .top-link:hover {
+        color: #777777; /* ホバー時の文字色 */
+        text-decoration: none; /* ホバー時にアンダーラインを削除 */
+    }
+
+    .user-icon:hover img {
+        filter: brightness(80%); /* 画像の明るさを変更 */
+    }
+
+    .user-icon {
+        cursor: pointer; /* カーソルを人差し指に変更 */
+    }
+</style>
 
 </header>

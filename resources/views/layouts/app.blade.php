@@ -13,7 +13,11 @@
 <body>
     @if (!isset($hideHeader) || !$hideHeader)
         @include('layouts.header') <!-- ヘッダー部分を別ファイルから取り込む -->
+        @include('components.navbar')
     @endif
+
+    
+    
 
     @section('content')
 

@@ -18,18 +18,17 @@ label{
     text-align: left;
 }
 
-
-
 header {
-    background-color: #fff;
-    color: #333;
-    text-align: center;
-    padding: 0px 10px;
-    border-bottom: 2px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        height: 55px; /* 適切な高さに変更してください */
+        background-color: #fff;
+        color: #333;
+        text-align: center;
+        padding: 0px 10px;
+        border-bottom: 2px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
 .top-links {
     display: flex;
@@ -82,11 +81,13 @@ nav a {
 .user-info {
     color: #333; /* ユーザー名のテキスト色 */
     font-weight: bold;
+    position: relative; /* 追加 */
 }
 
 .dropdown {
     position: relative;
     z-index: 5;
+    
 }
 
 #user-dropdown-content {
@@ -117,7 +118,6 @@ nav a {
         margin-bottom: 20px; /* 任意の余白の値 */
     }
 
-/* styles.css */
 
 .image-container {
     position: relative;
@@ -138,6 +138,7 @@ nav a {
 #user-dropdown-content {
     max-width: 200px;
     width: 200px;
+    
 }
 
 
@@ -298,30 +299,14 @@ a.mojiwhite {
     height: auto; /* アスペクト比を保持 */
 }
 
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
 @media only screen and (max-width: 400px) {
-    header {
-        flex-direction: column;
-        align-items: left;
-    }
-
-    .top-links {
-        flex-direction: column;
-        align-items: left;
-    }
-
-    .top-link,
-    .user-info {
-        margin-bottom: 10px;
-    }
-
-    .top-link:first-child {
-        margin-right: 0;
-    }
-
-    .mb-3 {
-        text-align: center; 
-    }
 
     .ranking-post {
         display: flex;
@@ -337,6 +322,19 @@ a.mojiwhite {
         font-size: 10px; /* スマートフォンの場合のプレースホルダーのフォントサイズを設定 */
     }
 
+    .dropdown {
+        position: relative;
+    }
+
+    .user-info .dropdown::before {
+        content: "";
+        position: absolute;
+        top: -10px; /* 適切な位置に調整 */
+        right: 15px; /* 適切な位置に調整 */
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent #fff transparent;
+    }
     
 }
 
