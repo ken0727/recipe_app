@@ -5,7 +5,7 @@
 @if ($user->image_path)
     <img src="{{ asset('storage/' . $user->image_path) }}" alt="{{ $user->name }}" width="200" height="200">
 @else
-    <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
+    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
 @endif
 <h2>{{ $user->name }}</h2>
 <a href="{{ route('profile.show') }}">プロフィールを編集する</a>

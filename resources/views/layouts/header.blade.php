@@ -18,7 +18,7 @@
                 @if(auth()->user()->image_path)
                     <img src="{{ asset('storage/' . auth()->user()->image_path) }}" alt="User Icon">
                 @else
-                    <img src="{{ asset('storage/Noimage.jpeg') }}" alt="No Image">
+                    <img src="{{ asset('images/Noimage.jpeg') }}" alt="No Image">
                 @endif
                 <div class="top-link">
         <span>Myメニュー</span>

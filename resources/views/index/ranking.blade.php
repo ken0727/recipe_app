@@ -10,11 +10,11 @@
             <div class="ranking-post">
                 <div class="medal-container">
                     @if ($key === 0)
-                        <img src="{{ asset('storage/gold-crown-icon.png') }}" alt="Gold Crown" class="crown-icon">
+                        <img src="{{ asset('images/gold-crown-icon.png') }}" alt="Gold Crown" class="crown-icon">
                     @elseif ($key === 1)
-                        <img src="{{ asset('storage/silver-crown-icon.png') }}" alt="Silver Crown" class="crown-icon">
+                        <img src="{{ asset('images/silver-crown-icon.png') }}" alt="Silver Crown" class="crown-icon">
                     @elseif ($key === 2)
-                        <img src="{{ asset('storage/bronze-crown-icon.png') }}" alt="Bronze Crown" class="crown-icon">
+                        <img src="{{ asset('images/bronze-crown-icon.png') }}" alt="Bronze Crown" class="crown-icon">
                     @endif
                 <p class="post-name">
                     {{ $post->name }}

@@ -19,7 +19,7 @@
                                 @if ($post->image_path)
                                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" width="200" height="200">
                                 @else
-                                    <img src="{{ asset('storage/Noimage.jpeg') }}" alt="Noimage" width="200" height="200">
+                                    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" width="200" height="200">
                                 @endif
                                 @if (Auth::check() && isset(Auth::user()->bookmarkRecipes) && Auth::user()->bookmarkRecipes->contains('post_id', $post->id))
                                     <!-- ★マークを表示 -->

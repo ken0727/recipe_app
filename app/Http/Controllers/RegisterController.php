@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
-        dd($request);
+        
         return redirect('/login')->with('success', '新規会員登録が完了しました。ログインしてください。');
     }
 
