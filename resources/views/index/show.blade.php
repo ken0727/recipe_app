@@ -44,7 +44,7 @@
             </div>
         @endforeach
     @else
-        <p>投稿はありません。</p>
+        <p>投稿はありません</p>
     @endif
     </div>
 @endsection

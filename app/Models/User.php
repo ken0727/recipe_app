@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Post;
 use App\Models\BookmarkRecipe;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -73,16 +74,44 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class, 'user_id');
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
     // ユーザーを削除する前に、関連するデータも削除する
-    protected static function boot()
+protected static function boot()
     {
         parent::boot();
 
         static::deleting(function ($user) {
-            $user->posts()->delete(); // ユーザーに紐づく投稿も削除
+            // SQLiteの場合はPRAGMAを使用する
+            if (DB::connection() instanceof \Illuminate\Database\SQLiteConnection) {
+                DB::statement('PRAGMA foreign_keys=off;');
+            } else {
+                // MySQLなどの他のデータベースの場合はSET FOREIGN_KEY_CHECKSを使用
+                DB::statement('SET FOREIGN_KEY_CHECKS=0');
+            }
+
+            // ユーザーに紐づく投稿も削除
+            $user->posts()->delete();
+
+            // ユーザーに紐づくブックマークも削除
+            $user->bookmarkRecipes()->delete();
+
+            // ユーザーがお気に入りしたデータも削除
+            $user->favorites()->delete();
+
+            // ユーザーがいいねしたデータも削除
+            $user->likes()->delete();
+
+            // 外部キー制約を再度有効にする
+            if (DB::connection() instanceof \Illuminate\Database\SQLiteConnection) {
+                DB::statement('PRAGMA foreign_keys=on;');
+            } else {
+                // MySQLなどの他のデータベースの場合はSET FOREIGN_KEY_CHECKSを使用
+                DB::statement('SET FOREIGN_KEY_CHECKS=1');
+            }
         });
     }
-
-
-
 }

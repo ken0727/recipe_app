@@ -8,7 +8,7 @@
     <h1>お気に入りユーザー一覧</h1>
 
     @if($favoriteUsers->isEmpty())
-        <p>お気に入りユーザーはありません。</p>
+        <p>お気に入りユーザーはありません</p>
     @else
         <ul class="user-list">
             @foreach($favoriteUsers as $favoriteUser)
