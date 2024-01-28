@@ -2,11 +2,21 @@
 @section('title', 'マイページ')
 @section('content')
 
-@if ($user->image_path)
-    <img src="{{ asset('storage/' . $user->image_path) }}" alt="{{ $user->name }}" width="200" height="200">
-@else
-    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" width="300" height="200">
-@endif
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="text-center">
+                @if ($user->image_path)
+                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="{{ $user->name }}" class="img-fluid rounded">
+                @else
+                    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" class="img-fluid rounded">
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <h2>{{ $user->name }}</h2>
 <a href="{{ route('profile.show') }}">プロフィールを編集する</a>
 

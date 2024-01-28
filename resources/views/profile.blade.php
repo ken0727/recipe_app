@@ -49,10 +49,21 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-6 text-center">
-                <img src="{{ asset('storage/' . $user->image_path) }}" alt="{{ $user->name }}" class="img-fluid rounded" width="200" height="200">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="text-center">
+                    @if(auth()->user()->image_path)
+                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="{{ $user->name }}" class="img-fluid rounded" width="200" height="200">
+                    @else
+                    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" width="200" height="200">
+                    @endif
+                </div>
             </div>
         </div>
     </div>
+
+    </div>
+
 @endsection
+                
