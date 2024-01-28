@@ -12,7 +12,7 @@
                         <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="img-fluid img-smaller rounded mb-3">
                     </div>
                 @else
-                    <p>画像はありません。</p>
+                    <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" class="img-fluid img-smaller rounded mb-3">
                 @endif
             </div>
             <div class="col-md-4 text-left">

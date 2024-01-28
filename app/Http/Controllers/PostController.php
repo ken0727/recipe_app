@@ -67,7 +67,7 @@ public function store(Request $request)
         $this->saveImage($post, $request->file('image_path'));
     } else {
         // 画像が添付されていない場合、Noimage.jpegを設定
-        $post->image_path = 'Noimage.jpeg';
+        $post->image_path = '';
         $post->save();
     }
 

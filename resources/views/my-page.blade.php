@@ -18,9 +18,12 @@
 
 
 <h2>{{ $user->name }}</h2>
-<a href="{{ route('profile.show') }}">プロフィールを編集する</a>
 
-<h2>自分の投稿一覧</h2>
+<button class="btn btn-primary mt-3" onclick="window.location='{{ route('profile.show') }}'">
+    プロフィールを編集する
+</button>
+
+<h2 class="mt-3">自分の投稿一覧</h2>
 
 @include('components.search_box', ['url' => url('/test/search'), 'searchType' => 'user'])
 

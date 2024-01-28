@@ -14,7 +14,11 @@
             @foreach($favoriteUsers as $favoriteUser)
                 <li class="user-item">
                     <a href="{{ route('users.posts', $favoriteUser) }}" class="user-link">
-                        <img src="{{ asset('storage/' . $favoriteUser->image_path) }}" alt="{{ $favoriteUser->name }}" class="user-image">
+                        @if ($favoriteUser->image_path)
+                            <img src="{{ asset('storage/' . $favoriteUser->image_path) }}" alt="{{ $favoriteUser->name }}" class="user-image">
+                        @else
+                            <img src="{{ asset('images/Noimage.jpeg') }}" alt="Noimage" class="user-image">
+                        @endif
                         <div class="user-details">
                             <span class="user-name">{{ $favoriteUser->name }}</span>
                         </div>
