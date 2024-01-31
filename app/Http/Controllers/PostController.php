@@ -114,6 +114,10 @@ public function destroy(Post $post)
 
     // ログインユーザーが投稿者であるか、または管理者であるかを確認
     if (auth()->id() === $post->user_id || auth()->user()->isAdmin()) {
+
+        // 投稿に関連する likes データを削除
+        $post->likes()->delete();
+
         // ここで投稿を削除する
         $post->delete();
 
