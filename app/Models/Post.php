@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Collection; // 追加
+use Illuminate\Support\Facades\DB; // 追加
 
 class Post extends Model
 {
@@ -48,15 +49,18 @@ class Post extends Model
     }
 
     // いいねのランキングを取得（例: 上位5件）
-    public static function getRanking(): Collection
-    {
-        return static::withCount('likes')
-            ->where('likes_count', '>', 0) // いいねが0でないものを抽出
-            ->orderByDesc('likes_count')
-            ->orderBy('created_at') // 追加: 作成日時でソート（同じいいね数の場合に古い方が上にくるように）
-            ->take(10) // 上位5件のみ取得
-            ->get();
-    }
-
+public static function getRanking(): Collection
+{
+    return static::leftJoin('likes', 'posts.id', '=', 'likes.post_id')
+        ->select('posts.*', DB::raw('COUNT(likes.id) as likes_count'))
+        ->groupBy('posts.id', 'posts.name', 'posts.user_id','posts.image_path','posts.material','posts.procedure','posts.created_at','posts.updated_at')
+        ->having('likes_count', '>', 0)
+        ->orderByDesc('likes_count')
+        ->orderBy('created_at')
+        ->take(10)
+        ->get();
+}
     
+
+
 }

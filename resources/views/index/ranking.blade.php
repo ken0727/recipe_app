@@ -20,12 +20,14 @@
                     {{ $post->name }}
                 </p>
                 </div>
+                <a href="{{ route('posts.show', $post) }}" style="position: relative; display: inline-block;">
                 @if ($post->image_path)
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->name }}" class="post-image" width="200" height="200">
                 @else
                     <img src="{{ asset('images/Noimage.jpeg') }}" alt="{{ $post->name }}" class="post-image" width="200" height="200">
                 @endif
                 <p class="like-count">いいね数: {{ $post->like_count }}</p>
+                </a>
             </div>
         @endforeach
     </div>

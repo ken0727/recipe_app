@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item">
                 
-            <a class="nav-link" href="{{ route('bookmarks') }}"><i class="fas fa-star"></i>お気に入り投稿</a>
+            <a class="nav-link" href="{{ route('bookmarks') }}"><i class="fas fa-star"></i>ブックマークレシピ</a>
             </li>
             <li class="nav-item">
                 
